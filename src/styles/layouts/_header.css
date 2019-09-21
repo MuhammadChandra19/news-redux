@@ -1,0 +1,13 @@
+.app-header {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    border-bottom: 1px solid #b5b5b5;
+}
+
+.app-header .setting-menu{
+    margin: 10px 10px 3px 20px;
+    font-size: 25px;
+}

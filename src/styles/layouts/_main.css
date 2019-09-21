@@ -1,0 +1,5 @@
+.main-child {
+    padding: 10px;
+    background-color: white;
+    min-height: calc(100vh - 66px) !important;
+}
