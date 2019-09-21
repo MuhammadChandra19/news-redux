@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Main from '../../layouts/Main';
 import { Row } from 'antd';
-import News from '../../components/News'
+import News from '../../containers/News'
 class Home extends Component {
 	constructor(props) {
 		super(props)
@@ -9,11 +9,6 @@ class Home extends Component {
 			listData: []
 		}
 	}
-
-	componentDidMount() {
-
-	}
-
 	render() {
 		return (
 			<Main >

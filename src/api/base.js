@@ -29,24 +29,32 @@ export class BaseApi {
 	 */
 
 	constructor(addtionalBaseUrl = '') {
-		this.baseUrl = process.env.API_URL || '';
+		this.baseUrl = process.env.REACT_APP_API_URL || '';
 
 		this.addtionalBaseUrl = addtionalBaseUrl;
 
 		this.axiosInstance = axios.create();
-
+		// this.axiosInstance.interceptors.request.use(
+		// 	// preRequestInterceptor,
+		// 	(err) => Promise.reject(err),
+		// );
 		this.axiosInstance.interceptors.response.use(
 			(response) => response,
+			(err) => Promise.reject(err),
 			errorInterceptor,
 		);
 	}
 
 	make(method, url, data = {}, addtionalConfig = {}, headers = {}) {
+		let withKey = {
+			...data,
+			apiKey: process.env.REACT_APP_API_KEY
+		}
 		let header = {
 			'Content-Type': 'application/json'
 		}
 		if (method === '') {
-			throw 'Error : please fill method';
+			throw new Error('Error : please fill method');
 		}
 
 		if (Object.keys(headers).length > 0) {
@@ -55,7 +63,7 @@ export class BaseApi {
 
 
 		if (typeof method !== 'string' && typeof url !== 'string') {
-			throw 'Error : method and url must be string';
+			throw new Error('Error : method and url must be string');
 		}
 
 		const config = {
@@ -66,14 +74,14 @@ export class BaseApi {
 			...addtionalConfig,
 		};
 		if (method === 'GET') {
-			Object.keys(data).forEach((key) => {
-				if (data[key] === null || data[key] === '') {
-					delete data[key];
+			Object.keys(withKey).forEach((key) => {
+				if (withKey[key] === null || withKey[key] === '') {
+					delete withKey[key];
 				}
 			});
-			config.params = data;
+			config.params = withKey;
 		} else {
-			config.data = data;
+			config.data = withKey;
 		}
 
 		return this.axiosInstance.request(config);

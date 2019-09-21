@@ -10,4 +10,5 @@
 .app-header .setting-menu{
     margin: 10px 10px 3px 20px;
     font-size: 25px;
+    cursor: pointer;
 }
