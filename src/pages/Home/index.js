@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Main from '../../layouts/Main';
 import { Row } from 'antd';
+import { withRouter } from 'react-router-dom'
+import Main from '../../layouts/Main';
+
 import News from '../../containers/News'
 class Home extends Component {
 	constructor(props) {
@@ -20,4 +22,4 @@ class Home extends Component {
 	}
 }
 
-export default Home;
+export default withRouter(Home);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import { Layout } from 'antd';
 import AppHeader from '../Header'
 import '../../styles/layouts/_main.css'
@@ -9,8 +10,10 @@ class Main extends Component {
 		return (
 			<Layout>
 				<AppHeader />
+				
 				<div className="main-child">
 					{
+					
 						this.props.children
 					}
 				</div>
@@ -20,4 +23,4 @@ class Main extends Component {
 	}
 }
 
-export default Main;
+export default withRouter(Main);

@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import './styles/_global.css'
 import './index.css';
 import "antd/dist/antd.css";
-import App from './App';
+import { ApplicationRouting } from './routes'
 import { Provider } from "react-redux";
 import store from "./redux";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+		{ApplicationRouting}
 	</Provider>,
 	document.getElementById('root')
 );

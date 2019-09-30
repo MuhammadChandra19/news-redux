@@ -12,6 +12,6 @@ export default (state = initialState, action) => {
 				newsList: action.payload.articles
 			}
 		default:
-			return state.newsList;
+			return state;
 	}
 }

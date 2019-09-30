@@ -1,3 +1,4 @@
+import { country } from '../../common/country'
 const initialState = {
   params: {
     country: 'us',
@@ -9,11 +10,12 @@ const initialState = {
     page: 1,
     from: '',
     to: '',
-  }
+  },
+  country
 }
 
 export default (state = initialState, action) => {
-  const { params } = state
+  const { params, country } = state
   const { payload, type } = action
   switch (type) {
     case "SET_PARAM":
@@ -21,6 +23,8 @@ export default (state = initialState, action) => {
         ...params,
         ...payload,
       }
+    case "GET_COUNTRY":
+      return country
     default:
       return {
         params
