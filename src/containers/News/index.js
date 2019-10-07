@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Col } from 'antd'
 import NewsItem from '../../components/NewsItem'
+import SpinContainer from '../../components/SpinContainer'
 import * as actions from '../../redux/actions/listNews'
 
 class News extends Component {
@@ -13,8 +14,8 @@ class News extends Component {
   }
 
   componentDidMount() {
-    const { loadNews } = this.props
-    loadNews()
+    const { loadNews, data } = this.props
+    loadNews(data)
   }
   render() {
     const { newsList } = this.props
@@ -25,16 +26,18 @@ class News extends Component {
             <NewsItem news={dt} />
           </Col>
         )
-        : null
+        : <SpinContainer />
     )
   }
 }
 
 const mapStateToProps = state => {
-  const { everything } = state
+  const { everything, params } = state
   const { newsList } = everything
+  const { data } = params
   return {
-    newsList
+    newsList,
+    data,
   }
 }
 

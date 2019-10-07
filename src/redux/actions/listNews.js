@@ -4,9 +4,9 @@ export const getList = (store) => {
 	return list
 }
 
-export const loadNews = () => {
+export const loadNews = (params) => {
 	return (dispatch) => {
-		return everythingApi.getNews('top-headlines', { country: 'us' })
+		return everythingApi.getNews('top-headlines', params)
 			.then(res => {
 				dispatch(returnNews(res.data))
 			})

@@ -1,5 +1,6 @@
-export const headerState = () => {
+export const headerState = (pathname) => {
   return {
-    type:"SET_ICON"
+    type:"SET_ICON",
+    payload: pathname,
   }
 }

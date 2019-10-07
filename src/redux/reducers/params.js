@@ -1,8 +1,8 @@
 import { country } from '../../common/country'
+
 const initialState = {
-  params: {
+  data: {
     country: 'us',
-    newsType: 'top-headlines',
     sources: '',
     category: '',
     q: '',
@@ -11,23 +11,52 @@ const initialState = {
     from: '',
     to: '',
   },
-  country
+  preset: {
+
+  },
+  country,
+  categoryList: [
+    'business',
+    'entertainment',
+    'general',
+    'health',
+    'science',
+    'sports',
+    'technology'
+  ]
 }
 
 export default (state = initialState, action) => {
-  const { params, country } = state
+  const { data, preset } = state
   const { payload, type } = action
   switch (type) {
-    case "SET_PARAM":
+    case "SET_PARAMS":
       return {
-        ...params,
-        ...payload,
+        ...state,
+        data : { ...data, ...preset },
+       
       }
-    case "GET_COUNTRY":
-      return country
+    case "PRESET_PARAMS":
+      return {
+        ...state,
+        preset: { ...preset, ...payload}
+      }
+    case "RESET_PARAMS":
+      return {
+        ...state,
+        data: {
+          country: 'us',
+          sources: '',
+          category: '',
+          q: '',
+          sortBy: '',
+          page: 1,
+          from: '',
+          to: '',
+        },
+        preset: {}
+      }
     default:
-      return {
-        params
-      }
+      return state
   }
 }
