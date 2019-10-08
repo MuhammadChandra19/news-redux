@@ -1,9 +1,13 @@
-import { message } from 'antd'
+import { notification } from 'antd'
 
 export const errorInterceptor = (err) => {
     const { response } = err;
+    const { data } = response
     if (response) {
-        message.error('Something wrong');
+        notification.error({
+            message: data.code,
+            description: data.message,
+        });
     }
 
     return Promise.reject(err);

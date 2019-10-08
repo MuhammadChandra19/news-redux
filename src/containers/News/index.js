@@ -6,13 +6,6 @@ import SpinContainer from '../../components/SpinContainer'
 import * as actions from '../../redux/actions/listNews'
 
 class News extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loading: false
-    }
-  }
-
   componentDidMount() {
     const { loadNews, data } = this.props
     loadNews(data)

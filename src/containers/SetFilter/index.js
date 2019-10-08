@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import { connect } from "react-redux"
-import * as actions from '../../redux/actions/params'
 import { Row, Col, Button} from 'antd';
+import * as actions from '../../redux/actions/params'
+
 
 class SetFilter extends Component {
-  render() { 
+
+  onApply = async() => {
     const { setParams } = this.props
+    await setParams()
+    await this.props.history.goBack()
+  }
+
+  render() { 
+    const { resetParams } = this.props
     return(
       <div>
         <Row className="mt-15">
           <Col span={11}>
-            <Button style={{ width: '100%'}}>Cancel</Button>
+            <Button onClick={resetParams} icon="undo" style={{ width: '100%'}}>Reset</Button>
           </Col>
           <Col span={11} push={2}>
-            <Button onClick={setParams} style={{ width: '100%'}} type="primary">Apply</Button>
+            <Button onClick={this.onApply} icon="search" style={{ width: '100%'}} type="primary">Apply</Button>
           </Col>
         </Row>
+        
       </div>
 
     )
   }
 }
-export default connect(null, actions)(SetFilter)
+export default connect(null, actions)(withRouter(SetFilter))

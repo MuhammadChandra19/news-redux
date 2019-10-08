@@ -4,19 +4,13 @@ import { connect } from "react-redux"
 import * as actions from '../../redux/actions/params'
 
 class Category extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      title: ''
-    }
-  }
-  setTitle = (title) => {
-    this.setState({title : `: ${title}`})
+  setTitle = async (title) => {
+    const { preSetParams } = this.props
+    await preSetParams({category: title })
   }
 
   render() {
-    const { title } = this.state
-    const { categoryList } = this.props
+    const { categoryList, preset } = this.props
     const menu =  (
       <Menu>
         {
@@ -30,7 +24,7 @@ class Category extends Component {
     )
     return (
       <Dropdown overlay={menu} placement="bottomCenter">
-        <Button icon="appstore" >Category {title}</Button>
+        <Button icon="appstore" >Category { `: ${preset.category || ''}`}</Button>
       </Dropdown>
     )
   }

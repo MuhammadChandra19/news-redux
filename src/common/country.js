@@ -1,27 +1,34 @@
 export const country = [
   {
-    id: 'cn',
-    name: 'China'
+    id: 'id',
+    name: 'Indonesia',
+    img: 'https://newsapi.org/images/flags/id.svg'
   },
   {
-    id: 'id',
-    name: 'Indonesia'
+    id: 'cn',
+    name: 'China',
+    img: 'https://newsapi.org/images/flags/cn.svg'
   },
+
   {
     id: 'jp',
-    name: 'Japan'
+    name: 'Japan',
+    img: 'https://newsapi.org/images/flags/jp.svg'
   },
   {
     id: 'sa',
-    name: 'Saudi Arabia'
+    name: 'Saudi Arabia',
+    img: 'https://newsapi.org/images/flags/sa.svg'
   },
   {
     id: 'gb',
-    name: 'United Kingdom'
+    name: 'United Kingdom',
+    img: 'https://newsapi.org/images/flags/gb.svg'
   },
   {
     id: 'us',
-    name: 'United States'
+    name: 'United States',
+    img: 'https://newsapi.org/images/flags/us.svg'
   },
 
 ]

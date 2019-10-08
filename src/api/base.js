@@ -40,8 +40,9 @@ export class BaseApi {
 		// );
 		this.axiosInstance.interceptors.response.use(
 			(response) => response,
-			(err) => Promise.reject(err),
 			errorInterceptor,
+			(err) => Promise.reject(err),
+			
 		);
 	}
 

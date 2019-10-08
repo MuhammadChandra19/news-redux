@@ -5,12 +5,6 @@ import Main from '../../layouts/Main';
 
 import News from '../../containers/News'
 class Home extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			listData: []
-		}
-	}
 	render() {
 		return (
 			<Main >

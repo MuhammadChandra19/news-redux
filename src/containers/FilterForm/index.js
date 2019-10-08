@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { connect } from "react-redux"
 import { Row, Col, Input, Button } from 'antd';
 import * as actions from '../../redux/actions/params'
+import * as commons from '../../redux/actions/common'
+import { bindActionCreators } from 'redux'
+import Countries from '../Countries'
 import Category from '../Category'
 const { Search } = Input;
 
 class FilterForm extends Component {
   render() {
-    const  { preSetParams, preset } = this.props
+    const  { preSetParams, preset, setVisible } = this.props
     return (
       <Row style={{height: 'calc(95vh - 96px)'}} className="filter-field">
         <Col span={24}>
@@ -22,20 +25,31 @@ class FilterForm extends Component {
           <Category />
         </Col>
         <Col span={11} push={2}>
-          <Button icon="compass" >Country</Button>
+          <Button onClick={() => setVisible({countryDrawer: true})} icon="compass" >Country</Button>
         </Col>
+        <Countries />
       </Row>
+      
     )
   }
 }
 
 const mapStateToProps = state => {
-  const { params } = state
+  const { params, common } = state
   const { data, preset } = params
+  const { visible } = common
   return {
     data,
-    preset
+    preset,
+    visible
   }
 }
 
-export default connect(mapStateToProps, actions)(FilterForm)
+const mapDispatchToProps = dispatch => {
+  return {
+   ...bindActionCreators(actions, dispatch),
+   ...bindActionCreators(commons, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterForm)
