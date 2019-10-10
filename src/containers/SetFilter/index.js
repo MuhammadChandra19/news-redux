@@ -16,7 +16,7 @@ class SetFilter extends Component {
   render() { 
     const { resetParams } = this.props
     return(
-      <div>
+      <React.Fragment>
         <Row className="mt-15">
           <Col span={11}>
             <Button onClick={resetParams} icon="undo" style={{ width: '100%'}}>Reset</Button>
@@ -26,7 +26,7 @@ class SetFilter extends Component {
           </Col>
         </Row>
         
-      </div>
+      </React.Fragment>
 
     )
   }

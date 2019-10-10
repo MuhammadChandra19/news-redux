@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import { connect } from "react-redux"
 import * as actions from '../../redux/actions/location'
-import { Layout } from 'antd';
+import { Layout, BackTop } from 'antd';
 import AppHeader from '../Header'
 import '../../styles/layouts/_main.css'
 
@@ -23,7 +23,7 @@ class Main extends Component {
 						this.props.children
 					}
 				</div>
-
+				<BackTop />
 			</Layout>
 		);
 	}

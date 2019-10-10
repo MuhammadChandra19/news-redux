@@ -10,7 +10,7 @@ const { Search } = Input;
 
 class FilterForm extends Component {
   render() {
-    const  { preSetParams, preset, setVisible } = this.props
+    const  { preSetParams, preset, setVisible, data } = this.props
     return (
       <Row style={{height: 'calc(95vh - 96px)'}} className="filter-field">
         <Col span={24}>
@@ -25,7 +25,7 @@ class FilterForm extends Component {
           <Category />
         </Col>
         <Col span={11} push={2}>
-          <Button onClick={() => setVisible({countryDrawer: true})} icon="compass" >Country</Button>
+          <Button onClick={() => setVisible({countryDrawer: true})} icon="compass" >{`Country: ${preset.country ? preset.country : data.country }`}</Button>
         </Col>
         <Countries />
       </Row>

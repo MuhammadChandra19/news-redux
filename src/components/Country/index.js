@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col } from 'antd'
-const Country = ({list}) => (
-  <div className="country__container mb-10">
+const Country = ({list, action}) => (
+  <div className="country__container mb-10" onClick={action}>
     <Row>
       <Col span={6}>
         <img alt={`${list.name} flag`} src={list.img} />
