@@ -5,7 +5,7 @@ const initialState = {
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case 'LOAD_NEWS':
-			return state.newsList;
+			return state
 		case 'NEWS_API':
 			return {
 				...state,

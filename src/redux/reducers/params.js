@@ -33,13 +33,13 @@ export default (state = initialState, action) => {
     case "SET_PARAMS":
       return {
         ...state,
-        data : { ...data, ...preset },
-       
+        data: { ...data, ...preset },
+
       }
     case "PRESET_PARAMS":
       return {
         ...state,
-        preset: { ...preset, ...payload}
+        preset: { ...preset, ...payload }
       }
     case "RESET_PARAMS":
       return {

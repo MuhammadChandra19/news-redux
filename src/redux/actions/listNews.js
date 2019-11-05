@@ -20,3 +20,9 @@ export const returnNews = (res) => {
 		payload: res
 	}
 }
+
+export const returnExist = () => {
+	return {
+		type: "LOAD_NEWS"
+	}
+}
